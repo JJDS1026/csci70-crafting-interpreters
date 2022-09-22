@@ -12,6 +12,8 @@ class Interpreter implements Expr.Visitor<Object> {
       Object right = evaluate(expr.right);
   
       switch (expr.operator.type) {
+        case BANG:
+            return !isTruthy(right);
         case MINUS:
             checkNumberOperand(expr.operator, right);
             return -(double)right;
