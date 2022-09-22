@@ -223,6 +223,9 @@ class Interpreter implements Expr.Visitor<Object>,
             return (double)left <= (double)right;
         case BANG_EQUAL: return !isEqual(left, right);
         case EQUAL_EQUAL: return isEqual(left, right);
+        case LESS_LESS:
+            checkNumberOperands(expr.operator, left, right);
+            return (double)( (int) (double)left <<  (int) (double)right);
     }
 
     // Unreachable.
