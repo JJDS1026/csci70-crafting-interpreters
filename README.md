@@ -31,3 +31,10 @@ print !x;
 ```
 print 5 * 3 + 2;
 ```
+
+### Left bit shift
+```
+print 5 << 2;
+var x = 1;
+print x << 5;
+```
