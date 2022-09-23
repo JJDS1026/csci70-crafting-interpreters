@@ -8,15 +8,12 @@
 ## Functionality
 The group chose to implement set 1.
 
-## Functionality
-The group chose to implement set 1.
-
 ### Do-while loop
 ```
 var x = 2;
 do {
     print x;
-    print x + 1;
+    x = x + 1;
 } while(x < 12)
 ```
 
