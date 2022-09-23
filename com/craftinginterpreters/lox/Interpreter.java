@@ -32,23 +32,30 @@ class Interpreter implements Expr.Visitor<Object>,
   
       switch (expr.operator.type) {
         case BANG:
-            return !isTruthy(right);
+            if (right.equals(0.0))
+            {
+                return isTruthy(right);
+            }
+            else
+            {
+                return !isTruthy((right));
+            }
         case MINUS:
             checkNumberOperand(expr.operator, right);
             return -(double)right;
       }
 
-      if (expr.operator.type == TokenType.BANG)
-      {
-          if (right.equals(0))
-          {
-              return isTruthy(right);
-          }
-          else
-          {
-              return !isTruthy((right));
-          }
-      }
+//      if (expr.operator.type == TokenType.BANG)
+//      {
+//          if (right.equals(0.0))
+//          {
+//              return isTruthy(right);
+//          }
+//          else
+//          {
+//              return !isTruthy((right));
+//          }
+//      }
   
       // Unreachable.
       return null;
@@ -182,7 +189,8 @@ class Interpreter implements Expr.Visitor<Object>,
           execute(stmt.body);
         } while (isTruthy(evaluate(stmt.condition)));
       } else {
-        execute(stmt.body);
+        // execute(stmt.body);
+          System.err.println("Error at end: while expected after '}'");
       }
       return null;
     }
