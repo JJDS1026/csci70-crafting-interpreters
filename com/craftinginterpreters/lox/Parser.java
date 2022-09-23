@@ -257,6 +257,9 @@ class Parser {
   }
 
   private Expr unary() {
+
+    Expr expr =  term();
+
     if (match(BANG, MINUS)) {
       Token operator = previous();
       Expr right = unary();
