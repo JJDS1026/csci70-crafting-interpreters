@@ -37,6 +37,18 @@ class Interpreter implements Expr.Visitor<Object>,
             checkNumberOperand(expr.operator, right);
             return -(double)right;
       }
+
+      if (expr.operator.type == TokenType.BANG)
+      {
+          if (right.equals(0))
+          {
+              return isTruthy(right);
+          }
+          else
+          {
+              return !isTruthy((right));
+          }
+      }
   
       // Unreachable.
       return null;
